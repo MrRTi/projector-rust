@@ -96,9 +96,10 @@ fn get_config(config: Option<PathBuf>) -> Result<PathBuf> {
         return Ok(v);
     }
 
-    let location = std::env::var("XDG_CONFIG_HOME").context("unable to get XDG_CONFIG_HOME")?;
+    let location = std::env::var("HOME").context("unable to get HOME")?;
     let mut location = PathBuf::from(location);
 
+    location.push(".config");
     location.push("projector");
     location.push("projector.json");
 
